@@ -1,4 +1,6 @@
-# Requirements: Starting Specializations Track from Holbrook, Arizona with bad wifi but back in TULSA tomorrow hopefully!!
+# Requirements
+
+Starting Specializations Track from Holbrook, Arizona with bad wifi but back in TULSA tomorrow hopefully!!
 
 ## General
 
