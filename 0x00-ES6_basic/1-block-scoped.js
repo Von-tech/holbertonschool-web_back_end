@@ -5,7 +5,7 @@ export default function taskBlock(trueOrFalse) {
   if (trueOrFalse) {
 
     let task = true;
-    const task2 = false;
+    let task2 = false;
   }
 
   return [task, task2];
