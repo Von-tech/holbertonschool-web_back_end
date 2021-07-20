@@ -11,3 +11,4 @@ export default class HolbertonClass {
     return this._location;
   }
 }
+// convType is conversion type
