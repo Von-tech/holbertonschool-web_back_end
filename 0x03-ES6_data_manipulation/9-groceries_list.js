@@ -4,3 +4,5 @@ export default function groceriesList() {
   for (const item of groArr) groMap.set(item[0], item[1]);
   return groMap;
 }
+// groArr is our grocery array of food items
+// groMap is our map
