@@ -5,7 +5,6 @@ export default function updateStudentGradeByCity(studentsList, city, newGrades) 
 
 function addScore(student) {
   for (const person in newGrades) {
-//  newGrades.forEach((person) => {
     if (person.studentId === student.id) {
       myArr.push(person.grade);
     }
