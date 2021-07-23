@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+// Above for lines 9 and 14 ^
 export default function updateStudentGradeByCity(studentsList, city, newGrades) {
   if (!(studentsList instanceof Array)) {
     return [];
