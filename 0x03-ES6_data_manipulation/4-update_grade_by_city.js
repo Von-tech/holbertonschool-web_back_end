@@ -11,11 +11,10 @@ export default function updateStudentGradeByCity(studentsList, city, newGrades) 
     });
 
     if (student.grade === undefined) {
-    student.grade = 'N/A';
+      student.grade = 'N/A';
     }
     return student;
   }
-
 
   const filteredStudentList = studentsList.filter((students) => students.location === city);
   return filteredStudentList.map(addGrade);
