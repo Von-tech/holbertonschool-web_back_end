@@ -3,7 +3,7 @@ export default function updateStudentGradeByCity(studentsList, city, newGrades) 
     return [];
 }
 
-function addScore(student) {
+function addGrade(student) {
   newGrades.forEach((person) => {
     if (person.studentId === student.id) {
       myArr.push(person.grade);
@@ -15,8 +15,10 @@ function addScore(student) {
   }
   return student;
 }
+
+
 const filteredStudentList = studentsList.filter((students) => students.location === city);
-return filteredStudentList.map(addScore);
+return filteredStudentList.map(addGrade);
 }
 // Create a function updateStudentGradeByCity that returns an array of students for a specific city with their new grade
 // It should accept a list of students (from getListStudents), a city (String), and newGrades (Array of “grade” objects) as parameters
