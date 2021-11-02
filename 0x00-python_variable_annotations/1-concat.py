@@ -1,4 +1,4 @@
-#!/usr/bin/env pytohn3
+#!/usr/bin/env python3
 """ Task 1: Basic annotations - concat """
 
 
