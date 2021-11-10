@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Task 2: LIFO caching """
 from base_caching import BaseCaching
-from datetime import datetime
 
 
 class LIFOCache(BaseCaching):
