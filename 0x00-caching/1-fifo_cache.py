@@ -18,7 +18,7 @@ class FIFOCache(BaseCaching):
                 self.cache_list.append(key)
             if len(self.cache_data) > self.MAX_ITEMS:
                 deleted_key = self.cache_list.pop(0)
-                print("DISCARD: {deleted_key}")
+                print("DISCARD: {}".format(deleted_key))
                 del self.cache_data[deleted_key]
         """ The key is deleted and returned """
 
