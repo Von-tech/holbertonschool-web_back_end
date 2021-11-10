@@ -18,9 +18,9 @@ class MRUCache(BaseCaching):
             self.cache_data.move_to_end(key)
 
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                delete = list(self.cache_data.keys())[BaseCaching.MAX_ITEMS - 1]
-                del self.cache_data[delete]
-                print("DISCARD: {}".format(delete))
+                d = list(self.cache_data.keys())[BaseCaching.MAX_ITEMS - 1]
+                del self.cache_data[d]
+                print("DISCARD: {}".format(d))
 
     def get(self, key):
         """ Gets key from cache dict if it exists """
