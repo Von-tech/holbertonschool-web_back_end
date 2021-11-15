@@ -36,8 +36,8 @@ class Server:
         Page_list = []
 
         """ Check to see if # of entries is larger than dataset """
-        range = (page * page_size)
-        if range > len(all_of_data):
+        the_range = (page * page_size)
+        if the_range > len(all_of_data):
             """ Return empty list if yes """
             return Page_list
 
