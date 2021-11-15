@@ -52,7 +52,7 @@ class Server:
         """ Return a dict containing the key/value pairs as listed """
         hp_dict = {}
         all_of_data = self.dataset()
-        data_size = len(all_data)
+        data_size = len(all_of_data)
         the_range = (page * page_size)
         total_page = (data_size + 1) / page_size
         if the_range > data_size:
