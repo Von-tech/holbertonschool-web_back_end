@@ -2,6 +2,8 @@
 """ Creating module to complete series of tasks """
 
 
+import mysql.connector
+import os
 from typing import List
 import re
 import logging
@@ -47,3 +49,19 @@ def get_logger() -> logging.Logger:
     user_log.setFormatter(RedactingFormatter(list(PII_FIELDS)))
     user_log.addHandler(user_log)
     return user_log
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """ Returns a connector to the holberton database """
+    host = os.environ['PERSONAL_DATA_DB_HOST']
+    database = os.environ['PERSONAL_DATA_DB_NAME']
+    user = os.environ['PERSONAL_DATA_DB_USERNAME']
+    password = os.environ['PERSONAL_DATA_DB_PASSWORD']
+
+    db = mysql.connector.connect(
+        host=host,
+        database=database,
+        user=user,
+        password=password
+    )
+    return db
