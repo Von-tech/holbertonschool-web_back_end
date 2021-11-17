@@ -65,3 +65,11 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
         password=password
     )
     return db
+
+
+def main():
+    """ Obtains a db connection & retrieves all rows in the users table """
+
+""" if __name__ == "__main__":
+    main()
+"""
