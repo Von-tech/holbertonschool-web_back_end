@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-""" Task 0: Write a function that returns the log message obfuscated """
-""" Task 1: Update class to accept a list of strs fields constructor arg """
-"""Implement the format method to filter values in incoming log records """
+""" Creating module to complete series of tasks """
+
+
 from typing import List
 import re
 import logging
