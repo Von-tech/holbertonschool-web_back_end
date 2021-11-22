@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Task 6: Basic Auth """
+""" Basic Auth Class """
 from api.v1.auth.auth import Auth
 from models.user import User
 import base64
@@ -35,3 +35,34 @@ class BasicAuth(Auth):
                                     None, False).decode('utf-8')
         except Exception:
             return None
+
+    def extract_user_credentials(self,
+                                 decoded_base64_authorization_header:
+                                 str) -> (str, str):
+        """ Method that returns email/password from Base64 decoded value """
+        special_colon = ':'
+        if decoded_base64_authorization_header is None:
+            return None, None
+        if isinstance(decoded_base64_authorization_header, str) is False:
+            return None, None
+        if special_colon not in decoded_base64_authorization_header:
+            return None, None
+        else:
+            values = decoded_base64_authorization_header.split(':')
+            return values
+
+    def user_object_from_credentials(self,
+                                     user_email: str,
+                                     user_pwd: str) -> TypeVar('User'):
+        """ Method that returns User instance based on his email/password """
+        if user_email is None or not isinstance(user_email, str):
+            return None
+        elif user_pwd is None or not isinstance(user_pwd, str):
+            return None
+        elif not DATA.get('User'):
+            return None
+        Search_users = User.search({'email': user_email})
+        for user in Search_users:
+            if user.is_valid_password(user_pwd):
+                return user
+        return None
