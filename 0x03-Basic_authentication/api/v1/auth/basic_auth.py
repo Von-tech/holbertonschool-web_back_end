@@ -2,7 +2,9 @@
 """ Task 6: Basic Auth """
 from api.v1.auth.auth import Auth
 from models.user import User
-
+import base64
+from models.base import DATA
+from typing import TypeVar
 
 class BasicAuth(Auth):
     """ New class that inherits from Auth """
