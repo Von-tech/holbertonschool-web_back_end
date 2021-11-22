@@ -23,12 +23,12 @@ class BasicAuth(Auth):
                                            base64_authorization_header:
                                            str) -> str:
         """ Method that returns the decoded value of a Base64 string """
-        """ if base64_authorization_header is None:
+        if base64_authorization_header is None:
             return None
-        elif not isinstance(base64_authorization_header, str):
+        if isinstance(base64_authorization_header, str) is False:
             return None
-        """
         try:
-            return b64decode(base64_authorization_header).decode('utf-8')
+            return base64.b64decode(base64_authorization_header,
+                                    None, False).decode('utf-8')
         except Exception:
             return None
