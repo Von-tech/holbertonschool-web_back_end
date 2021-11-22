@@ -8,18 +8,14 @@ class Auth:
     """ This class is used to manage the API authentication """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """ Check for excluded paths """
-
         backslash = '/'
 
         if path is None or excluded_paths is None:
             return True
-
         if not excluded_paths:
             return True
-
         if path[-1] != backslash:
             path += backslash
-
         if path not in excluded_paths:
             return True
         else:
