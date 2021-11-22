@@ -19,7 +19,6 @@ class BasicAuth(Auth):
         else:
             return authorization_header[6:]
 
-
     def decode_base64_authorization_header(self,
                                            base64_authorization_header:
                                            str) -> str:
@@ -29,11 +28,6 @@ class BasicAuth(Auth):
         elif not isinstance(base64_authorization_header, str):
             return None
         try:
-            if base64.b64encode(
-                    base64.b64decode(base64_authorization_header)
-            ) == base64_authorization_header:
-                pass
+            return b64decode(base64_authorization_header).decode('utf-8')
         except Exception:
             return None
-        decoded_str = base64.b64decode(base64_authorization_header)
-        return decoded_str.decode('utf-8')
