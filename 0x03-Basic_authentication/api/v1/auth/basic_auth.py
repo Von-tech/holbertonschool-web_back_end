@@ -6,6 +6,7 @@ import base64
 from models.base import DATA
 from typing import TypeVar
 
+
 class BasicAuth(Auth):
     """ New class that inherits from Auth """
     def extract_base64_authorization_header(self,
