@@ -20,7 +20,7 @@ if auth_type == 'auth':
     auth = Auth()
 elif auth_type == 'basic_auth':
     from api.v1.auth.basic_auth import BasicAuth
-    auth = BaicAuth()
+    auth = BasicAuth()
 excluded_paths = ['/api/v1/status/',
                   '/api/v1/unauthorized/', '/api/v1/forbidden/']
 
