@@ -6,3 +6,4 @@ from models.user import User
 
 class BaicAuth(Auth):
     """ New class that inherits from Auth """
+    pass
