@@ -12,16 +12,16 @@ class Auth:
         backslash = '/'
 
         if excluded_paths is None:
-        return True
+            return True
 
         if excluded_paths is not len(excluded_paths):
-        return True
+            return True
 
         if path is None:
             return True
 
         if path in excluded_paths:
-        return False
+            return False
 
         if path + backslash in excluded_paths:
             return False
