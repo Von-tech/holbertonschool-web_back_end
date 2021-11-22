@@ -4,6 +4,6 @@ from api.v1.auth.auth import Auth
 from models.user import User
 
 
-class BaicAuth(Auth):
+class BasicAuth(Auth):
     """ New class that inherits from Auth """
     pass
