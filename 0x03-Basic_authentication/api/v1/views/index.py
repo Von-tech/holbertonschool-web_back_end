@@ -16,6 +16,7 @@ def forbidden() -> str:
     """ Endpoint that raises a 401 error by using abort """
     abort(403)
 
+
 """ By calling abort(...) the error handler for ... will be executed """
 """ Above are endpoints used for testing the newly added error handlers """
 
