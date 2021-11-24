@@ -36,7 +36,7 @@ def before_request() -> Dict:
         if auth.authorization_header(request) is None:
             abort(401)
         if auth.session_cookie(request) is None:
-            sbort(401)
+            abort(401)
         elif auth.current_user(request) is None:
             abort(403)
         request.current_user = auth.current_user(request)
