@@ -2,6 +2,7 @@
 """ Task 3: Auth class """
 from typing import List, TypeVar
 from flask import request
+import os
 
 
 class Auth:
@@ -30,3 +31,9 @@ class Auth:
     def current_user(self, request=None) -> TypeVar('User'):
         """ Public method that return None - request """
         return None
+
+    def session_cookie(self, request=None):
+        """ Returns a cookie value from a request """
+        if request is None:
+            return None
+        return request.cookies.get(os.getenv("SESSION_NAME"))
