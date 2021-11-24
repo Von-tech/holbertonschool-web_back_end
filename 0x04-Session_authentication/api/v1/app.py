@@ -33,9 +33,8 @@ excluded_paths = ['/api/v1/status/',
 def before_request() -> Dict:
     """ Filtering each request with handler """
     if auth and auth.require_auth(request.path, excluded_paths):
-        if auth.authorization_header(request) is None:
-            abort(401)
-        if auth.session_cookie(request) is None:
+        if auth.authorization_header(request) is None and auth.session_cookie(
+                request) is None:
             abort(401)
         elif auth.current_user(request) is None:
             abort(403)
