@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """DB module
 """
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
@@ -43,3 +43,14 @@ class DB:
         """ Method takes in arbitrary kw args and returns first row """
         first_row = self._session.query(User).filter_by(**kwargs)
         return first_row.one()
+
+    def update_user(self, user_id: int, **kwargs: dict) -> None:
+        """ Method takes a required user_id int and arbitrary kw args """
+        user_update = self.find_user_by(id=user_id)
+        for key in kwargs:
+            try:
+                setattr(user_update, key, kwargs[key])
+            except:
+                raise ValueError
+        self._session.add(user_update)
+        self._session.commit()
