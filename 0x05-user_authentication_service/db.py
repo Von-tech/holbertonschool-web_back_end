@@ -48,7 +48,7 @@ class DB:
         """ Method takes a required user_id int and arbitrary kw args """
         user_update = self.find_user_by(id=user_id)
         for key in kwargs.keys():
-            if key not in list(user.__dict__.keys()):
+            if key not in list(user_update.__dict__.keys()):
                 raise ValueError
         for key, value in kwargs.items():
             setattr(user_update, key, value)
