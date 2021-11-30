@@ -39,12 +39,7 @@ class DB:
         self._session.commit()
         return create_new_user
 
-    def find_user_by(self, **kwargs: dict) -> User:
+    def find_user_by(self, **kwargs) -> User:
         """ Method takes in arbitrary kw args and returns first row """
         first_row = self._session.query(User).filter_by(**kwargs)
         return first_row.one()
-
-#        except NoResultFound:
- #           raise NoResultFound
-  #      except InvalidRequestError:
-   #         raise InvalidRequestError
