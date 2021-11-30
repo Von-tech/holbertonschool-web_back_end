@@ -44,12 +44,12 @@ class DB:
         first_row = self._session.query(User).filter_by(**kwargs)
         return first_row.one()
 
-    def update_user(self, user_id: int, **kwargs: dict) -> None:
+    def update_user(self, user_id: int, **kwargs: dict):
         """ Method takes a required user_id int and arbitrary kw args """
         user_update = self.find_user_by(id=user_id)
-        for key in kwargs:
-            try:
-                setattr(user_update, key, kwargs[key])
-            except:
+        for key in kwargs.keys():
+            if key not in list(user.__dict__.keys()):
                 raise ValueError
+        for key, value in kwargs.items():
+            setattr(user_update, key, value)
         self._session.commit()
