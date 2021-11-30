@@ -34,6 +34,5 @@ class DB:
         """ Method that creates and adds new user to the database """
         create_new_user = User(email=email, hashed_password=hashed_password)
         self._session.add(create_new_user)
-        """ Issue all remaining changes to the database and commit """
         self._session.commit()
         return create_new_user
