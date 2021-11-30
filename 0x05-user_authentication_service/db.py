@@ -5,6 +5,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
+from sqlalchemy.exc import NoResultFound
+from sqlalchemy.orm.exc import InvalidRequestError
+from typing import TypeVar
 
 from user import Base, User
 
@@ -36,3 +39,12 @@ class DB:
         self._session.add(create_new_user)
         self._session.commit()
         return create_new_user
+
+    def find_user_by(self, **kwargs) -> TypeVar('User'):
+        """ Method takes in arbitrary kw args and returns first row """
+        try:
+            return self._session.query(User).filter_by(**kwargs).one()
+        except NoResultFound:
+            raise NoResultFound
+        except InvalidRequestError:
+            raise InvalidRequestError
