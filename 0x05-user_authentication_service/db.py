@@ -41,9 +41,10 @@ class DB:
 
     def find_user_by(self, **kwargs: dict) -> User:
         """ Method takes in arbitrary kw args and returns first row """
-        try:
-            return self._session.query(User).filter_by(**kwargs).one()
-        except NoResultFound:
-            raise NoResultFound
-        except InvalidRequestError:
-            raise InvalidRequestError
+        first_row = self._session.query(User).filter_by(**kwargs)
+        return first_row.one()
+
+#        except NoResultFound:
+ #           raise NoResultFound
+  #      except InvalidRequestError:
+   #         raise InvalidRequestError
