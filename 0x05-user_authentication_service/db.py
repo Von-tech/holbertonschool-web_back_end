@@ -40,7 +40,7 @@ class DB:
         self._session.commit()
         return create_new_user
 
-    def find_user_by(self, **kwargs) -> TypeVar('User'):
+    def find_user_by(self, **kwargs: dict) -> User:
         """ Method takes in arbitrary kw args and returns first row """
         try:
             return self._session.query(User).filter_by(**kwargs).one()
