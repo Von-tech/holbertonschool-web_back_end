@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """ Task 0: User model """
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
