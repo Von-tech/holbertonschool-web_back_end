@@ -52,5 +52,4 @@ class DB:
                 setattr(user_update, key, kwargs[key])
             except:
                 raise ValueError
-        self._session.add(user_update)
         self._session.commit()
