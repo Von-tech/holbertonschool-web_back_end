@@ -15,6 +15,11 @@ def _hash_password(password: str) -> bytes:
     return hash
 
 
+def _generate_uuid() -> str:
+    """ Method that returns a str repr of a new UUID """
+    return str(uuid.uuid4())
+
+
 class Auth:
     """Auth class to interact with the authentication database.
     """
@@ -44,8 +49,3 @@ class Auth:
                 return False
         except NoResultFound:
             return False
-
-
-    def _generate_uuid() -> str:
-        """ Method that returns a str repr of a new UUID """
-        return str(uuid.uuid4())
