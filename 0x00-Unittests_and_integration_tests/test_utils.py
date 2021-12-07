@@ -43,3 +43,24 @@ class TestGetJson(unittest.TestCase):
         mock_request.assert_called_once()
         expected = get_json(test_url)
         self.assertEqual(expected, test_payload)
+
+
+class TestMemoize(unittest.TestCase):
+    """ New class, testing with memoization """
+    def test_memoize(self):
+        """ Defining new class within this method """
+
+        class TestClass:
+            def a_method(self):
+                """ Method within new class that tests with exit status 42 """
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
+
+        with mock.patch.object(TestClass, "a_method") as mock_42:
+            tmp = TestClass()
+            self.assertEqual(tmp.a_property, 42)
+            self.assertEqual(tmp.a_property, 42)
+            mock_42.assert_called_once()
