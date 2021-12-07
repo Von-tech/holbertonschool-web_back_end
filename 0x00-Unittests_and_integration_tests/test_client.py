@@ -17,7 +17,7 @@ class TestGithubOrgClient(unittest.TestCase):
     def test_org(self, org_name):
         """ Test func for .org """
         with patch('client.GithubOrgClient.org') as m_org:
-            client = GithubOrgClient(org_name=org_name)
+            client = GithubOrgClient(org_name)
             self.assertEqual(client.org.return_value, m_org.return_value)
 
     def test_public_repos_url(self):
@@ -25,5 +25,5 @@ class TestGithubOrgClient(unittest.TestCase):
         with patch('client.GithubOrgClient.org', new_callable=PropertyMock)\
                 as m_org:
             m_org.return_value = {"repos_url": True}
-            client = GithubOrgClient("new_org")
+            client = GithubOrgClient("org_name")
             self.assertEqual(client._public_repos_url, True)
