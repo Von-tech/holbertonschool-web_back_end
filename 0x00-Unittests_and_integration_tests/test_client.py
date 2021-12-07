@@ -11,7 +11,7 @@ class TestGithubOrgClient(unittest.TestCase):
     """ New class for testing GithubOrgClient """
 
     @parameterized.expand([
-        {"google"),
+        ("google"),
         ("abc")
     ])
     def test_org(self, org_name):
