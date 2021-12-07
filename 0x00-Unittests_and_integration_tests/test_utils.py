@@ -34,7 +34,7 @@ class TestGetJson(unittest.TestCase):
     """ New class to test get_json method """
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
-        ("http://holberton.io", {"payload": Flase})
+        ("http://holberton.io", {"payload": False})
     ])
     @patch('requests.get')
     def test_get_json(self, test_url, test_payload, mock_request):
