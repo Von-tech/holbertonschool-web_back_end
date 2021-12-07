@@ -4,7 +4,7 @@ import unittest
 import requests
 import json
 from unittest.mock import patch
-from unittest import mock
+from unittest import mock, TestCase
 from parameterized import parameterized
 from utils import access_nested_map, get_json, memoize
 
