@@ -28,6 +28,18 @@ class TestGithubOrgClient(unittest.TestCase):
             client = GithubOrgClient("org_name")
             self.assertEqual(client._public_repos_url, True)
 
+    @patch('client.get_json')
+    def test_public_repos(self, mock_json):
+        """ Method to test client.GithubOrgClient.public_repos """
+        with patch('client.GithubOrgClient.public_repos',
+                   new_callable=PropertyMock) as m_prop:
+            mock_json.return_value = {'repos_url': 'www.randomgenerator.com'}
+            client = GithubOrgClient('randomgenerator')
+            m_prop.return_value = client.org.get('repos_url')
+            self.assertEqual(client.public_repos, 'www.randomgenerator.com')
+            m_prop.assert_called_once()
+            mock_json.assert_called_once()
+
     @parameterized.expand([
         ({"license": {"key": "my_license"}}, "my_license", True),
         ({"license": {"key": "other_license"}}, "my_license", False)
