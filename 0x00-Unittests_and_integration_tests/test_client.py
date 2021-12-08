@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ Now we will test the clients.py file """
 from client import GithubOrgClient
+from fixtures import TEST_PAYLOAD
 from parameterized import parameterized, parameterized_class
 from requests import Response
 from unittest.mock import Mock, PropertyMock, patch
