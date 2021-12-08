@@ -48,3 +48,17 @@ class TestGithubOrgClient(unittest.TestCase):
         """ Method in order to unit-test GithubOrgClient.has_license """
         The_test = GithubOrgClient('org_name')
         self.assertEqual(The_test.has_license(repo, license_key), expected)
+
+
+@parameterized_class(
+    ("org_payload", "repos_payload", "expected_repos", "apache2_repos"),
+    TEST_PAYLOAD
+)
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """ Integration test; inmplementing two methods """
+
+    def setUpClass():
+        """ Setup Class; mock requests.get to return example payloads """
+
+    def tearDownClass():
+        """ Teardown Class to stop the patcher """
