@@ -6,6 +6,7 @@ from typing import Text
 
 app = Flask(__name__)
 babel = Babel()
+gettext.__doc__ = "Documentation for gettext"
 
 
 class Config(object):
@@ -18,7 +19,7 @@ class Config(object):
 app.config.from_object(Config)
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     """ Returning our html page """
     return render_template('3-index.html')
