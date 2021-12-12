@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """ Task 0: Setup a basic Flask app """
 from flask import Flask, render_template
 app = Flask(__name__)
