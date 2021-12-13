@@ -2,6 +2,7 @@
 """ Task 7:  Infer appropriate time zone """
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, gettext
+import pytz
 from pytz import timezone
 from pytz.exceptions import UnknownTimeZoneError
 
@@ -72,8 +73,9 @@ def get_timezone():
         timezone = g.user['timezone']
         if timezone in pytz.all_timezones:
             return timezone
-    except pytz.exceptions.UnknownTimeZoneError:
-        timezone = None
+    except:
+        raise pytz.exceptions.UnknownTimeZoneError
+        return 'UTC'
 
 
 @app.before_request
