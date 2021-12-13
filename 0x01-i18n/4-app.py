@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-""" Task 2: Get locale from request """
+""" Task 4: Force locale with URL parameter """
 from flask import Flask, render_template, request
 from flask_babel import Babel, gettext
-from typing import Text
+
 
 app = Flask(__name__)
-babel = Babel()
-gettext.__doc__ = """Documentation for gettext"""
+babel = Babel(app)
+gettext.__doc__ = "Documentation for gettext"
 """ Checker requirements """
 
 
@@ -16,24 +16,25 @@ class Config(object):
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
-
+    
 app.config.from_object(Config)
 
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
     """ Returning our html page """
     return render_template('4-index.html')
+                            
 
 
 @babel.localeselector
 def get_locale():
     """ Getting locale from request.accept_languages """
-    locale = request.args.get("locale")
-    if locale is not None and locale in Config.LANGUAGES:
-        return locale
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
-
+      locale = request.args.get("locale")
+      if locale is not None and locale in Config.LANGUAGES:
+          return locale
+      return request.accept_languages.best_match(app.config['LANGUAGES'])
+                  
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")

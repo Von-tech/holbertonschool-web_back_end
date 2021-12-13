@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-""" Task 2: Get locale from request """
+""" Task 3: Parametrize templates """
 from flask import Flask, render_template, request
 from flask_babel import Babel, gettext
-from typing import Text
+
 
 app = Flask(__name__)
-babel = Babel()
-gettext.__doc__ = """Documentation for gettext"""
+babel = Babel(app)
+gettext.__doc__ = "Documentation for gettext"
 """ Checker requirements """
 
 
@@ -20,7 +20,7 @@ class Config(object):
 app.config.from_object(Config)
 
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
     """ Returning our html page """
     return render_template('3-index.html')
