@@ -6,7 +6,8 @@ from typing import Text
 
 app = Flask(__name__)
 babel = Babel()
-gettext.__doc__ = "Documentation for gettext"
+gettext.__doc__ = """Documentation for gettext"""
+""" Checker requirements """
 
 
 class Config(object):
