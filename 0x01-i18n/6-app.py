@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Task 5: Mock logging in """
+""" Task 6: Use user locale """
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, gettext
 
@@ -41,7 +41,13 @@ def get_locale():
     locale = request.args.get("locale")
     if locale is not None and locale in Config.LANGUAGES:
         return locale
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    try:
+        user = get_user()
+        if user and user['locale'] in Config.LANGUAGES:
+            return user['locale']
+        raise Exception
+    except Exception:
+        return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 def get_user():
