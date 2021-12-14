@@ -36,7 +36,7 @@ class Cache():
         return self.get(key, str)
 
 
-    def get_str(self, key: str) -> str:
+    def get_int(self, key: str) -> int:
         """  Parametrize Cache.get with the correct conversion function.
         Takes a bytes string and return to a int.
         """
