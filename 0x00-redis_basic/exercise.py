@@ -18,3 +18,26 @@ class Cache():
         rand_key = str(uuid4())
         self._redis.set(rand_key, data)
         return rand_key
+
+
+    def get(self, key: str,
+            fn: Callable = None) -> Union[str, bytes, int, float]:
+        """ Method will get the value of key if it exists """
+        if fn is not None:
+            return fn(self._redis.get(key))
+        else:
+            return self._redis.get(key)
+
+
+    def get_str(self, key: str) -> str:
+        """  Parametrize Cache.get with the correct conversion function.
+        Takes a bytes string and return to a str.
+        """
+        return self.get(key, str)
+
+
+    def get_str(self, key: str) -> str:
+        """  Parametrize Cache.get with the correct conversion function.
+        Takes a bytes string and return to a int.
+        """
+        return self.get(key, int)
