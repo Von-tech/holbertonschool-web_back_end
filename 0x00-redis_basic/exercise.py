@@ -2,7 +2,7 @@
 """ Task 0: Writing strings to Redis """
 import redis
 from uuid import uuid4
-from typing import Union
+from typing import Union, Callable
 
 
 class Cache():
