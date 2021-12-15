@@ -40,7 +40,7 @@ def replay(method: Callable) -> Callable:
     r_var = method.__self__._redis
     self = method.__qualname__
 
-    aux = r.get(self).decode('utf-8')
+    aux = r_var.get(self).decode('utf-8')
     inputs = r_var.lrange(method.__qualname__ + ':inputs', 0, -1)
     outputs = r_var.lrange(method.__qualname__ + ':outputs', 0, -1)
     print("{} was called {} times:".format(method.__qualname__, aux))
