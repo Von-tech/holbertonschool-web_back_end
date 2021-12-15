@@ -7,7 +7,7 @@ from functools import wraps
 
 
 def count_calls(method: Callable) -> Callable:
-    """ System to count how many times methods of the Cache class are called """
+    """ System counts how many times methods of the Cache class are called """
     @wraps(method)
     def wrapper(self, *args) -> bytes:
         """ Here is our wrapper func for count_calls """
@@ -35,35 +35,34 @@ def call_history(method: Callable) -> Callable:
 def replay(method: Callable) -> Callable:
     """ Method to display the history of calls of a particular function.
     Tip: use lrange and zip to loop over inputs and outputs in history
-    When the server returns bytes, it will be converted into a str 
+    When the server returns bytes, it will be converted into a str
     """
-     r_var = method.__self__._redis
-     self = method.__qualname__
-     
-     aux = c.get(self).decode('utf-8')
-     inputs = r_var.lrange(method.__qualname__ + ':inputs', 0, -1)
-     outputs = r_var.lrange(method.__qualname__ + ':outputs', 0, -1)
-     print("{} was called {} times:".format(method.__qualname__, aux))
-     for input, output in zip(inputs, outputs):
-         print('{}(*{}) -> {}'.format(self, input.decode("utf-8"),
-                                      output.decode("utf-8")))
-                
-        
+    r_var = method.__self__._redis
+    self = method.__qualname__
+
+    aux = c.get(self).decode('utf-8')
+    inputs = r_var.lrange(method.__qualname__ + ':inputs', 0, -1)
+    outputs = r_var.lrange(method.__qualname__ + ':outputs', 0, -1)
+    print("{} was called {} times:".format(method.__qualname__, aux))
+    for input, output in zip(inputs, outputs):
+        print('{}(*{}) -> {}'.format(self, input.decode("utf-8"),
+                                     output.decode("utf-8")))
+
+
 class Cache():
     """ New class stores an instance of the Redis client as a private var """
     def __init__(self):
         """ Storing instance """
         self._redis = redis.Redis()
         self._redis.flushdb()
-        
+
     @call_history
     @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
-        """ Method generates a random key and stores the input data in Redis """
+        """ Method generates a rand key & stores the input data in Redis """
         rand_key = str(uuid4())
         self._redis.set(rand_key, data)
         return rand_key
-
 
     def get(self, key: str,
             fn: Callable = None) -> Union[str, bytes, int, float]:
@@ -73,13 +72,11 @@ class Cache():
         else:
             return self._redis.get(key)
 
-
     def get_str(self, key: str) -> str:
         """  Parametrize Cache.get with the correct conversion function.
         Takes a bytes string and return to a str.
         """
         return self.get(key, str)
-
 
     def get_int(self, key: str) -> int:
         """  Parametrize Cache.get with the correct conversion function.
