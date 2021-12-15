@@ -32,6 +32,23 @@ def call_history(method: Callable) -> Callable:
     return wrapper
 
 
+def replay(method: Callable) -> Callable:
+    """ Method to display the history of calls of a particular function.
+    Tip: use lrange and zip to loop over inputs and outputs in history
+    When the server returns bytes, it will be converted into a str 
+    """
+     r_var = method.__self__._redis
+     self = method.__qualname__
+     
+     aux = c.get(self).decode('utf-8')
+     inputs = r_var.lrange(method.__qualname__ + ':inputs', 0, -1)
+     outputs = r_var.lrange(method.__qualname__ + ':outputs', 0, -1)
+     print("{} was called {} times:".format(method.__qualname__, aux))
+     for input, output in zip(inputs, outputs):
+         print('{}(*{}) -> {}'.format(self, input.decode("utf-8"),
+                                      output.decode("utf-8")))
+                
+        
 class Cache():
     """ New class stores an instance of the Redis client as a private var """
     def __init__(self):
