@@ -3,7 +3,7 @@ const fs = require('fs');
 const countStudents = (path) => {
   if (!fs.existsSync(path)) {
     throw new Error('Cannot load the database');
-  }    
+  }
   const FileContents = fs.readFileSync(path, 'utf8');
   let arr = FileContents.toString().split(/\r?\n/);
   arr = arr.filter((line) => line !== '');
