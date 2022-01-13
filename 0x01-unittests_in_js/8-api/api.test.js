@@ -1,5 +1,7 @@
 const chai = require("chai");
-const request = require('request')
+const request = require('request');
+
+const expect = chai.expect;
 
 describe('Suite for the index page', () => {
     describe('GET /', () => {
