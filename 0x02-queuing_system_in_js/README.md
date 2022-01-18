@@ -1,6 +1,7 @@
 ## Learning Objectives
 
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
+
 * How to run a Redis server on your machine
 * How to run simple operations with the Redis client
 * How to use a Redis client with Node JS for basic operations
@@ -10,7 +11,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * How to build a basic Express app interacting with a Redis server
 * How to the build a basic Express app interacting with a Redis server and queue
 
-## Requirements
+##Requirements
 
 * All of your code will be compiled/interpreted on Ubuntu 18.04, Node 12.x, and Redis 5.0.7
 * All of your files should end with a new line
