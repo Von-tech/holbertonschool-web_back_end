@@ -18,7 +18,7 @@ client.on('error', (err) => {
     console.log('Redis client connected to the server');
 });
 
-const setNewSchool = async (schoolName, value) => console.log(`Reply: ${await asyncSet(schoolName, vlaue)}`)
+const setNewSchool = async (schoolName, value) => console.log(`Reply: ${await asyncSet(schoolName, value)}`)
 const displaySchoolValue = async (schoolName) => console.log(await asyncGet(schoolName))
 
 displaySchoolValue('Holberton');
