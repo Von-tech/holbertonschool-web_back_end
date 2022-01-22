@@ -52,7 +52,7 @@ const jobs = [
         const newJob = queue.create('push_notification_code_2', obj).save()
         newJob
         .on('enqueue', () => console.log(`Notification job created: ${newJob.id}`))
-        .on('complete', () => console.log('Notification job ${newJob.id} completed'))
-        .on('failed', (error) => console.log('Notification job ${newJob.id} failed: ${error'))
-        .on('progress', (progress, data) => console.log('Notification job ${newJob.id} ${progress}% complete'))
+        .on('complete', () => console.log(`Notification job ${newJob.id} completed`))
+        .on('failed', (error) => console.log(`Notification job ${newJob.id} failed: ${error}`))
+        .on('progress', (progress, data) => console.log(`Notification job ${newJob.id} ${progress}% complete`))
     })
