@@ -1,12 +1,13 @@
-#!/usr/bin/env python3
-""" Write a Python function that lists all documents in a collection """
-
+from pymongo import MongoClient
 
 def list_all(mongo_collection):
-    """mongo_collection will be the pymongo collection object
-       Return an empty list if no document in the collection
     """
-    documents = mongo_collection.find()
-    if documents.count() == 0:
-        return []
-    return documents
+    This function lists all documents in a MongoDB collection.
+    Parameters:
+    mongo_collection (pymongo.collection. Collection): The MongoDB collection to query.
+
+    Returns:
+    list: A list of all documents in the collection. If the collection is empty, it returns an empty list.
+    """
+
+    return list(mongo_collection.find())
